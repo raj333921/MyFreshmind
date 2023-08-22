@@ -1,4 +1,6 @@
 import {UserController} from "./controller/UserController";
+import {CategoryController} from "./controller/CategoryController";
+import {IndexesController} from "./controller/IndexesController";
 
 export const Routes = [{
       method: "get",
@@ -14,4 +16,32 @@ export const Routes = [{
    }, {
       method: "delete", route: "/users/:id", controller: UserController,
       action: "remove"
-}];
+},{
+        method: "get",
+        route: "/category",
+        controller: CategoryController, action: "all"
+     }, {
+        method: "get",
+        route: "/category/:id", controller: CategoryController, action: "one"
+     }, {
+        method: "post",
+        route: "/category",
+        controller: CategoryController, action: "save"
+     }, {
+        method: "delete", route: "/category/:id", controller: CategoryController,
+        action: "remove"
+  },{
+          method: "get",
+          route: "/indexes",
+          controller: IndexesController, action: "all"
+       }, {
+          method: "get",
+          route: "/indexes/:id", controller: IndexesController, action: "one"
+       }, {
+          method: "post",
+          route: "/indexes",
+          controller: IndexesController, action: "save"
+       }, {
+          method: "delete", route: "/indexes/:id", controller: IndexesController,
+          action: "remove"
+    }];
