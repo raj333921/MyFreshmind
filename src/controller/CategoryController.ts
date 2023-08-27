@@ -9,7 +9,12 @@ export class CategoryController {
    async all(request: Request, response: Response, next: NextFunction) { 
       return this.categoryRepository.createQueryBuilder("category").innerJoinAndSelect("category.indexes", "indexes").getMany();
    } 
-   
+
+
+   async allCat(request: Request, response: Response, next: NextFunction) {
+    return this.categoryRepository.find();
+   }
+
    async one(request: Request, response: Response, next: NextFunction) { 
       return this.categoryRepository.findOneBy({categoryId:request.params.id});
    } 

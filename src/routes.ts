@@ -4,44 +4,48 @@ import {IndexesController} from "./controller/IndexesController";
 
 export const Routes = [{
       method: "get",
-      route: "/users",
+      route: "/freshdb/users",
       controller: UserController, action: "all"
    }, {
       method: "get",
-      route: "/users/:id", controller: UserController, action: "one"
+      route: "/freshdb/users/:id", controller: UserController, action: "one"
    }, {
       method: "post",
-      route: "/users",
+      route: "/freshdb/users",
       controller: UserController, action: "save"
    }, {
-      method: "delete", route: "/users/:id", controller: UserController,
+      method: "delete", route: "/freshdb/users/:id", controller: UserController,
       action: "remove"
 },{
         method: "get",
-        route: "/category",
+        route: "/freshdb/categoryindexes",
         controller: CategoryController, action: "all"
-     }, {
+     },{
+               method: "get",
+               route: "/freshdb/categories",
+               controller: CategoryController, action: "allCat"
+            }, {
         method: "get",
-        route: "/category/:id", controller: CategoryController, action: "one"
+        route: "/freshdb/category/:id", controller: CategoryController, action: "one"
      }, {
         method: "post",
-        route: "/category",
+        route: "/freshdb/categoryInsert",
         controller: CategoryController, action: "save"
      }, {
-        method: "delete", route: "/category/:id", controller: CategoryController,
+        method: "delete", route: "/freshdb/category/:id", controller: CategoryController,
         action: "remove"
   },{
           method: "get",
-          route: "/indexes",
+          route: "/freshdb/indexes",
           controller: IndexesController, action: "all"
        }, {
           method: "get",
-          route: "/indexes/:id", controller: IndexesController, action: "one"
+          route: "/freshdb/indexes/:id", controller: IndexesController, action: "one"
        }, {
           method: "post",
-          route: "/indexes",
+          route: "/freshdb/indexesInsert",
           controller: IndexesController, action: "save"
        }, {
-          method: "delete", route: "/indexes/:id", controller: IndexesController,
+          method: "delete", route: "/freshdb/indexes/:id", controller: IndexesController,
           action: "remove"
     }];
