@@ -1,6 +1,7 @@
 import {UserController} from "./controller/UserController";
 import {CategoryController} from "./controller/CategoryController";
 import {IndexesController} from "./controller/IndexesController";
+import {AuditController} from "./controller/AuditController";
 
 export const Routes = [{
       method: "get",
@@ -48,4 +49,8 @@ export const Routes = [{
        }, {
           method: "delete", route: "/freshdb/indexes/:id", controller: IndexesController,
           action: "remove"
-    }];
+    },{
+            method: "get",
+            route: "/freshdb/auditTrail",
+            controller: AuditController, action: "all"
+         }];

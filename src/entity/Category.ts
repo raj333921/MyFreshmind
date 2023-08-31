@@ -16,6 +16,11 @@ export class Category {
     @Column()
     categoryType: string
 
+    @Column({
+        nullable: true,
+    })
+    categoryLoc: string
+
     @CreateDateColumn()
     created_at: Date;
 

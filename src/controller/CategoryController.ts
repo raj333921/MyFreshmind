@@ -1,29 +1,36 @@
 import { AppDataSource } from "../data-source"
 import {NextFunction, Request, Response} from "express";
 import {Category} from "../entity/Category";
+import {AuditController} from "./AuditController";
+import * as ip from "ip";
 
 export class CategoryController {
 
    private categoryRepository = AppDataSource.getRepository(Category);
-
-   async all(request: Request, response: Response, next: NextFunction) { 
+   private auditController:AuditController = new AuditController();
+   async all(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("CATEGORY & INDEX REQUEST",ip.address(),"REQUEST");
       return this.categoryRepository.createQueryBuilder("category").innerJoinAndSelect("category.indexes", "indexes").getMany();
    } 
 
 
    async allCat(request: Request, response: Response, next: NextFunction) {
+    this.auditController.saveAudit("ALL CATEGORY",ip.address(),"SELECT");
     return this.categoryRepository.find();
    }
 
-   async one(request: Request, response: Response, next: NextFunction) { 
+   async one(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("CATEGORY ONE REQUEST",ip.address(),"SELECT");
       return this.categoryRepository.findOneBy({categoryId:request.params.id});
    } 
    
-   async save(request: Request, response: Response, next: NextFunction) { 
+   async save(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("CATEGORY SAVE REQUEST",ip.address(),"INSERT");
       return this.categoryRepository.save(request.body);
    } 
    
-   async remove(request: Request, response: Response, next: NextFunction) { 
+   async remove(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("CATEGORY REMOVE",ip.address(),"DELETE");
       let userToRemove = await this.categoryRepository.findOneBy({categoryId:request.params.id});
       await this.categoryRepository.remove(userToRemove);
    } 

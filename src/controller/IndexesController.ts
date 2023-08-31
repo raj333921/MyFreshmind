@@ -1,24 +1,30 @@
 import { AppDataSource } from "../data-source"
 import {NextFunction, Request, Response} from "express";
 import {Indexes} from "../entity/Indexes";
+import * as ip from "ip";
+import {AuditController} from "./AuditController";
 
 export class IndexesController {
 
    private indexRepository = AppDataSource.getRepository(Indexes);
-   
-   async all(request: Request, response: Response, next: NextFunction) { 
+     private auditController:AuditController = new AuditController();
+   async all(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("INDEXES ALL REQUEST",ip.address(),"SELECT");
       return this.indexRepository.find();
    } 
 
-   async one(request: Request, response: Response, next: NextFunction) { 
+   async one(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("INDEXES ONE REQUEST",ip.address(),"SELECT");
       return this.indexRepository.findOneBy({indexesId:request.params.id});
    } 
    
-   async save(request: Request, response: Response, next: NextFunction) { 
+   async save(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("INDEXES SAVE",ip.address(),"INSERT");
       return this.indexRepository.save(request.body);
    } 
    
-   async remove(request: Request, response: Response, next: NextFunction) { 
+   async remove(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("INDEXES REMOVE",ip.address(),"DELETE");
       let userToRemove = await this.indexRepository.findOneBy({indexesId:request.params.id});
       await this.indexRepository.remove(userToRemove);
    } 

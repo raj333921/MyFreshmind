@@ -19,6 +19,11 @@ export class Indexes {
     @Column()
     indexesType: string
 
+    @Column({
+        nullable: true
+    })
+    indexesLoc: string
+
     @Column()
     categoryId: number
 

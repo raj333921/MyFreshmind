@@ -3,6 +3,8 @@ import { DataSource } from "typeorm"
 import { User } from "./entity/User"
 import { Category } from "./entity/Category"
 import { Indexes } from "./entity/Indexes"
+import { AuditTrail } from "./entity/AuditTrail"
+
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -13,7 +15,9 @@ export const AppDataSource = new DataSource({
     database: "sachvkfl_bookmark",
     synchronize: true,
     logging: false,
-    entities: [User,Category,Indexes],
+    entities: [User,Category,Indexes,AuditTrail],
     migrations: [],
     subscribers: [],
 })
+
+
