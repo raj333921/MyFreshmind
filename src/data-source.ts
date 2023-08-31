@@ -4,7 +4,7 @@ import { User } from "./entity/User"
 import { Category } from "./entity/Category"
 import { Indexes } from "./entity/Indexes"
 import { AuditTrail } from "./entity/AuditTrail"
-
+import { Event } from "./entity/Event"
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -15,9 +15,10 @@ export const AppDataSource = new DataSource({
     database: "sachvkfl_bookmark",
     synchronize: true,
     logging: false,
-    entities: [User,Category,Indexes,AuditTrail],
+    entities: [User,Category,Indexes,AuditTrail,Event],
     migrations: [],
     subscribers: [],
 })
+
 
 

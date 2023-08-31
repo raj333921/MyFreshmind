@@ -2,6 +2,7 @@ import {UserController} from "./controller/UserController";
 import {CategoryController} from "./controller/CategoryController";
 import {IndexesController} from "./controller/IndexesController";
 import {AuditController} from "./controller/AuditController";
+import {EventController} from "./controller/EventController";
 
 export const Routes = [{
       method: "get",
@@ -53,4 +54,18 @@ export const Routes = [{
             method: "get",
             route: "/freshdb/auditTrail",
             controller: AuditController, action: "all"
-         }];
+         },{
+                 method: "get",
+                 route: "/freshdb/events",
+                 controller: EventController, action: "all"
+              }, {
+                 method: "get",
+                 route: "/freshdb/events/:id", controller: EventController, action: "one"
+              }, {
+                 method: "post",
+                 route: "/freshdb/events",
+                 controller: EventController, action: "save"
+              }, {
+                 method: "delete", route: "/freshdb/events/:id", controller: EventController,
+                 action: "remove"
+           }];
