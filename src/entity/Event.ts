@@ -33,6 +33,11 @@ export class Event {
     @Column()
     type: string
 
+    @Column({
+        nullable: true
+    })
+    eventLoc: string
+
     @CreateDateColumn()
     created_at: Date;
 
