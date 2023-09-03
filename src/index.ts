@@ -4,10 +4,11 @@ import * as bodyParser from "body-parser";
 import {Request, Response} from "express";
 import {Routes} from "./routes";
 import {User} from "./entity/User";
-
+import * as cors from "cors";
  const app = express();
  app.use(bodyParser.json());
- app.listen(3143)
+ app.listen(3143);
+ app.use(cors());
 
    Routes.forEach(route => {
       (app as any)[route.method](route.route, (req:   Request, res: Response, next: Function) => {
