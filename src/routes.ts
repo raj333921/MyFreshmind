@@ -3,6 +3,7 @@ import {CategoryController} from "./controller/CategoryController";
 import {IndexesController} from "./controller/IndexesController";
 import {AuditController} from "./controller/AuditController";
 import {EventController} from "./controller/EventController";
+import {FAQController} from "./controller/FAQController";
 
 export const Routes = [{
       method: "get",
@@ -68,4 +69,18 @@ export const Routes = [{
               }, {
                  method: "delete", route: "/freshdb/events/:id", controller: EventController,
                  action: "remove"
-           }];
+           },{
+                              method: "get",
+                              route: "/freshdb/faq",
+                              controller: FAQController, action: "all"
+                           }, {
+                              method: "get",
+                              route: "/freshdb/faq/:id", controller: FAQController, action: "one"
+                           }, {
+                              method: "post",
+                              route: "/freshdb/faqInsert",
+                              controller: FAQController, action: "save"
+                           }, {
+                              method: "delete", route: "/freshdb/faq/:id", controller: FAQController,
+                              action: "remove"
+                        }];
