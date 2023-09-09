@@ -5,21 +5,21 @@ import { Indexes } from "./Indexes"
 export class Category {
 
     @PrimaryGeneratedColumn()
-    categoryId: number
+    id: number
 
     @Column()
-    categoryName: string
+    name: string
 
     @Column()
-    categoryDesc: string
+    description: string
 
     @Column()
-    categoryType: string
+    type: string
 
     @Column({
         nullable: true,
     })
-    categoryLoc: string
+    location: string
 
     @CreateDateColumn()
     created_at: Date;

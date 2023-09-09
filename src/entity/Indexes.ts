@@ -5,24 +5,24 @@ import { Category } from "./Category"
 export class Indexes {
 
     @PrimaryGeneratedColumn()
-    indexesId: number
+    id: number
 
     @Column()
-    indexesName: string
+    name: string
 
     @Column()
-    indexesDesc: string
+    description: string
 
     @Column()
-    indexesURL: string
+    url: string
 
     @Column()
-    indexesType: string
+    type: string
 
     @Column({
         nullable: true
     })
-    indexesLoc: string
+    location: string
 
     @Column()
     categoryId: number

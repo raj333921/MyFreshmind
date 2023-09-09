@@ -4,22 +4,22 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 export class Faq {
 
     @PrimaryGeneratedColumn()
-    faqId: number
+    id: number
 
     @Column()
-    faqQuestion: string
+    question: string
 
     @Column()
-    faqAnswer: string
+    answer: string
 
     @Column()
-    faqAuthor: String
+    author: String
 
     @Column()
-    faqCategory: String
+    category: String
 
     @Column()
-    faqLoc: String
+    location: String
 
     @CreateDateColumn()
     created_at: Date;

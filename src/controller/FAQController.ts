@@ -15,18 +15,18 @@ export class FAQController {
    } 
    
    async one(request: Request, response: Response, next: NextFunction) {
-     this.auditController.saveAudit("FAQ ONE REQUEST",ip.address(),"SELECT");
-      return this.faqRepository.findOneBy({faqId:request.params.id});
-   } 
+       this.auditController.saveAudit("FAQ ONE REQUEST",ip.address(),"SELECT");
+       return this.faqRepository.findOneBy({ id:parseInt(request.params.id)});
+   }
    
    async save(request: Request, response: Response, next: NextFunction) {
-     this.auditController.saveAudit("FAQ SAVE",ip.address(),"INSERT");
-      return this.faqRepository.save(request.body);
-   } 
+       this.auditController.saveAudit("FAQ SAVE",ip.address(),"INSERT");
+       return this.faqRepository.save(request.body);
+   }
    
    async remove(request: Request, response: Response, next: NextFunction) {
-     this.auditController.saveAudit("FAQ ONE REMOVE",ip.address(),"REMOVE");
-      let userToRemove = await this.faqRepository.findOneBy({faqId:request.params.id});
-      await this.faqRepository.remove(userToRemove);
-   } 
+       this.auditController.saveAudit("FAQ ONE REMOVE",ip.address(),"REMOVE");
+       let userToRemove = await this.faqRepository.findOneBy({id:parseInt(request.params.id)});
+       return this.faqRepository.remove(userToRemove);
+   }
 }

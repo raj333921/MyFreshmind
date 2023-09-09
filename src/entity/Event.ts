@@ -4,19 +4,19 @@ import { Entity, PrimaryGeneratedColumn, Column,ManyToOne,JoinColumn,CreateDateC
 export class Event {
 
     @PrimaryGeneratedColumn()
-    eventId: number
+    id: number
 
     @Column()
-    eventName: string
+    name: string
 
     @Column()
-    eventStartDate: string
+    startDate: Date
 
     @Column()
-    eventEndDate: string
+    endDate: Date
 
     @Column()
-    location: string
+    mapLocation: string
 
     @Column()
     website: string
@@ -36,7 +36,7 @@ export class Event {
     @Column({
         nullable: true
     })
-    eventLoc: string
+    location: string
 
     @CreateDateColumn()
     created_at: Date;
