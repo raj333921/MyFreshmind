@@ -15,9 +15,9 @@ export class EventController {
    } 
    
    async one(request: Request, response: Response, next: NextFunction) {
-     this.auditController.saveAudit("EVENTS ONE REQUEST",ip.address(),"SELECT");
-      return this.eventRepository.findOneBy({eventId:request.params.id});
-   } 
+       this.auditController.saveAudit("EVENTS ONE REQUEST",ip.address(),"SELECT");
+       return this.eventRepository.findOneBy({id:parseInt(request.params.id)});
+   }
    
    async save(request: Request, response: Response, next: NextFunction) {
      this.auditController.saveAudit("Events SAVE",ip.address(),"INSERT");
@@ -25,8 +25,8 @@ export class EventController {
    } 
    
    async remove(request: Request, response: Response, next: NextFunction) {
-     this.auditController.saveAudit("EVENTS ONE REMOVE",ip.address(),"REMOVE");
-      let userToRemove = await this.eventRepository.findOneBy({eventId:request.params.id});
-      await this.eventRepository.remove(userToRemove);
-   } 
+       this.auditController.saveAudit("EVENTS ONE REMOVE",ip.address(),"REMOVE");
+       let userToRemove = await this.eventRepository.findOneBy({id:parseInt(request.params.id)});
+       return this.eventRepository.remove(userToRemove);
+   }
 }

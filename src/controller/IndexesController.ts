@@ -14,9 +14,9 @@ export class IndexesController {
    } 
 
    async one(request: Request, response: Response, next: NextFunction) {
-     this.auditController.saveAudit("INDEXES ONE REQUEST",ip.address(),"SELECT");
-      return this.indexRepository.findOneBy({indexesId:request.params.id});
-   } 
+       this.auditController.saveAudit("INDEXES ONE REQUEST",ip.address(),"SELECT");
+       return this.indexRepository.findOneBy({id:parseInt(request.params.id)});
+   }
    
    async save(request: Request, response: Response, next: NextFunction) {
      this.auditController.saveAudit("INDEXES SAVE",ip.address(),"INSERT");
@@ -24,8 +24,8 @@ export class IndexesController {
    } 
    
    async remove(request: Request, response: Response, next: NextFunction) {
-     this.auditController.saveAudit("INDEXES REMOVE",ip.address(),"DELETE");
-      let userToRemove = await this.indexRepository.findOneBy({indexesId:request.params.id});
-      await this.indexRepository.remove(userToRemove);
-   } 
+       this.auditController.saveAudit("INDEXES REMOVE",ip.address(),"DELETE");
+       let userToRemove = await this.indexRepository.findOneBy({id:parseInt(request.params.id)});
+       return this.indexRepository.remove(userToRemove);
+   }
 }

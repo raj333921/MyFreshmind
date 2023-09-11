@@ -11,7 +11,7 @@ export class AuditController {
    } 
    
    async one(request: Request, response: Response, next: NextFunction) { 
-      return this.auditRepository.findOneBy({auditId:request.params.id});
+      return this.auditRepository.findOneBy({id:parseInt(request.params.id)});
    } 
 
    async save(request: Request, response: Response, next: NextFunction) {
@@ -20,16 +20,16 @@ export class AuditController {
    }
 
    async remove(request: Request, response: Response, next: NextFunction) { 
-      let userToRemove = await this.auditRepository.findOneBy({auditId:request.params.id});
+      let userToRemove = await this.auditRepository.findOneBy({id:parseInt(request.params.id)});
       await this.auditRepository.remove(userToRemove);
    }
 
 
   saveAudit(name: string,ip: string,desc: string): boolean{
     this.auditRepository.save({
-               auditName: name,
-               auditIp: ip,
-               auditDesc: desc
+               name: name,
+               ip: ip,
+               description: desc
             });
             return true;
             }

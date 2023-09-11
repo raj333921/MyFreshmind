@@ -5,16 +5,16 @@ import { Category } from "./Category"
 export class AuditTrail {
 
     @PrimaryGeneratedColumn()
-    auditId: number
+    id: number
 
     @Column()
-    auditName: string
+    name: string
 
     @Column()
-    auditIp: string
+    ip: string
 
     @Column()
-    auditDesc: string
+    description: string
 
     @CreateDateColumn()
     created_at: Date;

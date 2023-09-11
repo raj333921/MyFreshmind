@@ -20,9 +20,9 @@ export class CategoryController {
    }
 
    async one(request: Request, response: Response, next: NextFunction) {
-     this.auditController.saveAudit("CATEGORY ONE REQUEST",ip.address(),"SELECT");
-      return this.categoryRepository.findOneBy({categoryId:request.params.id});
-   } 
+       this.auditController.saveAudit("CATEGORY ONE REQUEST",ip.address(),"SELECT");
+       return this.categoryRepository.findOneBy({id:parseInt(request.params.id)});
+   }
    
    async save(request: Request, response: Response, next: NextFunction) {
      this.auditController.saveAudit("CATEGORY SAVE REQUEST",ip.address(),"INSERT");
@@ -30,8 +30,8 @@ export class CategoryController {
    } 
    
    async remove(request: Request, response: Response, next: NextFunction) {
-     this.auditController.saveAudit("CATEGORY REMOVE",ip.address(),"DELETE");
-      let userToRemove = await this.categoryRepository.findOneBy({categoryId:request.params.id});
-      await this.categoryRepository.remove(userToRemove);
-   } 
+       this.auditController.saveAudit("CATEGORY REMOVE",ip.address(),"DELETE");
+       let userToRemove = await this.categoryRepository.findOneBy({id:parseInt(request.params.id)});
+       return this.categoryRepository.remove(userToRemove);
+   }
 }
