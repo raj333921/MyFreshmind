@@ -28,4 +28,9 @@ export class IndexesController {
        let userToRemove = await this.indexRepository.findOneBy({id:parseInt(request.params.id)});
        return this.indexRepository.remove(userToRemove);
    }
+
+   async bulksave(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("FAQ BULK REQUEST",ip.address(),"INSERT");
+      return this.indexRepository.createQueryBuilder().insert().into(Indexes).values(request.body).execute();
+   }
 }

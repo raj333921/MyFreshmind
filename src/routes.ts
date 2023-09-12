@@ -47,7 +47,11 @@ export const Routes = [
         method: "delete",
         route: "/freshdb/category/:id",
         controller: CategoryController, action: "remove"
-    },
+    }, {
+              method: "post",
+              route: "/freshdb/categorybulk",
+              controller: CategoryController, action: "bulksave"
+          },
     //Index Routes
     {
         method: "get",
@@ -65,7 +69,11 @@ export const Routes = [
         method: "delete",
         route: "/freshdb/index/:id",
         controller: IndexesController, action: "remove"
-    },
+    },{
+              method: "post",
+              route: "/freshdb/indexbulk",
+              controller: IndexesController, action: "bulksave"
+          },
     //Audit Routes
     {
         method: "get",
@@ -89,7 +97,11 @@ export const Routes = [
         method: "delete",
         route: "/freshdb/event/:id",
         controller: EventController, action: "remove"
-    },
+    },{
+      method: "post",
+              route: "/freshdb/eventbulk",
+              controller: EventController, action: "bulksave"
+          },
     //FAQ Routes
     {
         method: "get",
@@ -107,4 +119,8 @@ export const Routes = [
         method: "delete",
         route: "/freshdb/faq/:id",
         controller: FAQController, action: "remove"
-    }];
+    },{
+      method: "post",
+              route: "/freshdb/faqbulk",
+              controller: FAQController, action: "bulksave"
+          },];

@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column,ManyToOne,JoinColumn,CreateDateColumn,UpdateDateColumn} from "typeorm"
 
-@Entity()
+@Entity("tb_event")
 export class Event {
 
     @PrimaryGeneratedColumn()
@@ -33,9 +33,7 @@ export class Event {
     @Column()
     type: string
 
-    @Column({
-        nullable: true
-    })
+    @Column()
     location: string
 
     @CreateDateColumn()

@@ -29,4 +29,9 @@ export class EventController {
        let userToRemove = await this.eventRepository.findOneBy({id:parseInt(request.params.id)});
        return this.eventRepository.remove(userToRemove);
    }
+
+   async bulksave(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("EVENT BULK REQUEST",ip.address(),"INSERT");
+      return this.eventRepository.createQueryBuilder().insert().into(Event).values(request.body).execute();
+   }
 }

@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm"
 
-@Entity()
+@Entity("tb_faq")
 export class Faq {
 
     @PrimaryGeneratedColumn()

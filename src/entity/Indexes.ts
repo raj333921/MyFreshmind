@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column,ManyToOne,JoinColumn,CreateDateColumn,UpdateDateColumn} from "typeorm"
 import { Category } from "./Category"
 
-@Entity()
+@Entity("tb_indexes")
 export class Indexes {
 
     @PrimaryGeneratedColumn()
@@ -19,9 +19,7 @@ export class Indexes {
     @Column()
     type: string
 
-    @Column({
-        nullable: true
-    })
+    @Column()
     location: string
 
     @Column()

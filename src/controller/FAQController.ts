@@ -29,4 +29,10 @@ export class FAQController {
        let userToRemove = await this.faqRepository.findOneBy({id:parseInt(request.params.id)});
        return this.faqRepository.remove(userToRemove);
    }
+
+
+   async bulksave(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("FAQ BULK REQUEST",ip.address(),"INSERT");
+      return this.faqRepository.createQueryBuilder().insert().into(Faq).values(request.body).execute();
+   }
 }

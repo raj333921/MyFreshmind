@@ -34,4 +34,9 @@ export class CategoryController {
        let userToRemove = await this.categoryRepository.findOneBy({id:parseInt(request.params.id)});
        return this.categoryRepository.remove(userToRemove);
    }
+
+   async bulksave(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("CATEGORY BULK REQUEST",ip.address(),"INSERT");
+      return this.categoryRepository.createQueryBuilder().insert().into(Category).values(request.body).execute();
+   }
 }

@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column,OneToMany,CreateDateColumn,UpdateDateColumn } from "typeorm"
 import { Indexes } from "./Indexes"
 
-@Entity()
+@Entity("tb_category")
 export class Category {
 
     @PrimaryGeneratedColumn()
@@ -16,9 +16,7 @@ export class Category {
     @Column()
     type: string
 
-    @Column({
-        nullable: true,
-    })
+    @Column()
     location: string
 
     @CreateDateColumn()
