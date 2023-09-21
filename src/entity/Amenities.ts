@@ -1,29 +1,27 @@
 import { Entity, PrimaryGeneratedColumn, Column,ManyToOne,JoinColumn,CreateDateColumn,UpdateDateColumn} from "typeorm"
-import { Category } from "./Category"
-
-@Entity("tb_indexes")
-export class Indexes {
+import { Event } from './Event'
+@Entity("tb_amenities")
+export class Amenities {
 
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column({
+            nullable: true
+        })
     name: string
 
+    @Column({
+            nullable: true
+        })
     @Column()
-    description: string
-
-    @Column()
-    url: string
+    desc: string
 
     @Column()
     type: string
 
     @Column()
-    location: string
-
-    @Column()
-    categoryId: number
+    eventId: number
 
     @CreateDateColumn()
     created_at: Date;
@@ -31,8 +29,8 @@ export class Indexes {
     @UpdateDateColumn()
     updated_at: Date;
 
-    @ManyToOne(() => Category, (category) => category.indexes)
-    @JoinColumn({name :'categoryId'})
-    category: Category
+    @ManyToOne(() => Event, (event) => event.amenities)
+    @JoinColumn({name :'eventId'})
+    event: Event
 
 }

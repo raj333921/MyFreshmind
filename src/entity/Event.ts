@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column,ManyToOne,JoinColumn,CreateDateColumn,UpdateDateColumn} from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column,OneToMany,JoinColumn,CreateDateColumn,UpdateDateColumn} from "typeorm"
+import { Amenities } from "./Amenities"
 
 @Entity("tb_event")
 export class Event {
@@ -36,10 +37,18 @@ export class Event {
     @Column()
     location: string
 
+    @Column({
+            nullable: true
+        })
+    price: string
+
     @CreateDateColumn()
     created_at: Date;
 
     @UpdateDateColumn()
     updated_at: Date;
+
+    @OneToMany(() => Amenities, (amenities) => amenities.event)
+    amenities: Amenities[]
 
 }

@@ -34,4 +34,9 @@ export class EventController {
      this.auditController.saveAudit("EVENT BULK REQUEST",ip.address(),"INSERT");
       return this.eventRepository.createQueryBuilder().insert().into(Event).values(request.body).execute();
    }
+
+   async allEA(request: Request, response: Response, next: NextFunction) {
+        this.auditController.saveAudit("Event & Amenities REQUEST",ip.address(),"REQUEST");
+         return this.eventRepository.createQueryBuilder("event").leftJoinAndSelect("event.amenities", "amenities").getMany();
+      }
 }

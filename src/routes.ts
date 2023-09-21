@@ -4,6 +4,7 @@ import {IndexesController} from "./controller/IndexesController";
 import {AuditController} from "./controller/AuditController";
 import {EventController} from "./controller/EventController";
 import {FAQController} from "./controller/FAQController";
+import {AmenitiesController} from "./controller/AmenitiesController";
 
 export const Routes = [
     //User Routes
@@ -101,6 +102,10 @@ export const Routes = [
       method: "post",
               route: "/freshdb/eventbulk",
               controller: EventController, action: "bulksave"
+          },{
+      method: "get",
+              route: "/freshdb/eventamenities",
+              controller: EventController, action: "allEA"
           },
     //FAQ Routes
     {
@@ -123,4 +128,27 @@ export const Routes = [
       method: "post",
               route: "/freshdb/faqbulk",
               controller: FAQController, action: "bulksave"
-          },];
+          },
+
+        //Amenities
+        {
+                method: "get",
+                route: "/freshdb/amenities",
+                controller: AmenitiesController, action: "all"
+            }, {
+                method: "get",
+                route: "/freshdb/amenities/:id",
+                controller: AmenitiesController, action: "one"
+            }, {
+                method: "post",
+                route: "/freshdb/amenities",
+                controller: AmenitiesController, action: "save"
+            }, {
+                method: "delete",
+                route: "/freshdb/amenities/:id",
+                controller: AmenitiesController, action: "remove"
+            },{
+              method: "post",
+                      route: "/freshdb/amenitiesbulk",
+                      controller: AmenitiesController, action: "bulksave"
+                  }];

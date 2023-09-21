@@ -6,6 +6,7 @@ import { Indexes } from "./entity/Indexes"
 import { AuditTrail } from "./entity/AuditTrail"
 import { Event } from "./entity/Event"
 import { Faq } from "./entity/Faq"
+import { Amenities } from "./entity/Amenities"
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -16,7 +17,7 @@ export const AppDataSource = new DataSource({
     database: "sachvkfl_bookmark",
     synchronize: true,
     logging: false,
-    entities: [User,Category,Indexes,AuditTrail,Event,Faq],
+    entities: [User,Category,Indexes,AuditTrail,Event,Faq,Amenities],
     migrations: [],
     subscribers: [],
 })
