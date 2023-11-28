@@ -9,8 +9,9 @@ export class CategoryController {
    private categoryRepository = AppDataSource.getRepository(Category);
    private auditController:AuditController = new AuditController();
    async all(request: Request, response: Response, next: NextFunction) {
+     let loc = request.query.loc ? request.query.loc : "BE"
      this.auditController.saveAudit("CATEGORY & INDEX REQUEST",ip.address(),"REQUEST");
-      return this.categoryRepository.createQueryBuilder("category").innerJoinAndSelect("category.indexes", "indexes").getMany();
+     return this.categoryRepository.createQueryBuilder("category").where("category.location = :location", { location: loc }).innerJoinAndSelect("category.indexes", "indexes").getMany();
    } 
 
 

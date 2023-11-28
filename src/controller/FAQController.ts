@@ -10,8 +10,9 @@ export class FAQController {
      private auditController:AuditController = new AuditController();
    
    async all(request: Request, response: Response, next: NextFunction) {
+     let loc = request.query.loc ? request.query.loc : "BE"
      this.auditController.saveAudit("FAQ ALL REQUEST",ip.address(),"SELECT");
-      return this.faqRepository.find();
+      return this.faqRepository.createQueryBuilder("faq").where("faq.location = :location", { location: loc }).getMany();
    } 
    
    async one(request: Request, response: Response, next: NextFunction) {

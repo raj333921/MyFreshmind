@@ -36,7 +36,8 @@ export class EventController {
    }
 
    async allEA(request: Request, response: Response, next: NextFunction) {
+        let loc = request.query.loc ? request.query.loc : "BE"
         this.auditController.saveAudit("Event & Amenities REQUEST",ip.address(),"REQUEST");
-         return this.eventRepository.createQueryBuilder("event").leftJoinAndSelect("event.amenities", "amenities").getMany();
+        return this.eventRepository.createQueryBuilder("event").where("event.location = :location", { location: loc }).leftJoinAndSelect("event.amenities", "amenities").getMany();
       }
 }
