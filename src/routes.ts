@@ -5,6 +5,8 @@ import {AuditController} from "./controller/AuditController";
 import {EventController} from "./controller/EventController";
 import {FAQController} from "./controller/FAQController";
 import {AmenitiesController} from "./controller/AmenitiesController";
+import {JobListingController} from "./controller/JobListingController";
+
 
 export const Routes = [
     //User Routes
@@ -151,4 +153,24 @@ export const Routes = [
               method: "post",
                       route: "/freshdb/amenitiesbulk",
                       controller: AmenitiesController, action: "bulksave"
-                  }];
+                  },
+                  //JOB Listing
+                  {
+                          method: "get",
+                          route: "/freshdb/jobListing",
+                          controller: JobListingController, action: "all"
+                      }, {
+                          method: "get",
+                          route: "/freshdb/jobListing/:id",
+                          controller: JobListingController, action: "one"
+                      }, {
+                          method: "post",
+                          route: "/freshdb/jobListing",
+                          controller: JobListingController, action: "save"
+                      }, {
+                          method: "delete",
+                          route: "/freshdb/jobListing/:id",
+                          controller: JobListingController, action: "remove"
+                      },
+                  ];
+
