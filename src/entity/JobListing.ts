@@ -30,6 +30,12 @@ export class JobListing {
     @Column()
     description: string
 
+    @Column()
+    techDetails: string
+
+    @Column()
+    client: string
+
     @CreateDateColumn()
     closeDate: Date;
 
