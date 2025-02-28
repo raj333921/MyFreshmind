@@ -6,6 +6,7 @@ import {EventController} from "./controller/EventController";
 import {FAQController} from "./controller/FAQController";
 import {AmenitiesController} from "./controller/AmenitiesController";
 import {JobListingController} from "./controller/JobListingController";
+import {ApplyJobController} from "./controller/ApplyJobController";
 
 
 export const Routes = [
@@ -172,5 +173,23 @@ export const Routes = [
                           route: "/freshdb/jobListing/:id",
                           controller: JobListingController, action: "remove"
                       },
+                      //Apply Job
+                                        {
+                                                method: "get",
+                                                route: "/freshdb/applyJob",
+                                                controller: ApplyJobController, action: "all"
+                                            }, {
+                                                method: "get",
+                                                route: "/freshdb/applyJob/:id",
+                                                controller: ApplyJobController, action: "one"
+                                            }, {
+                                                method: "post",
+                                                route: "/freshdb/applyJob",
+                                                controller: ApplyJobController, action: "save"
+                                            }, {
+                                                method: "delete",
+                                                route: "/freshdb/applyJob/:id",
+                                                controller: ApplyJobController, action: "remove"
+                                            },
                   ];
 

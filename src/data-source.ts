@@ -8,6 +8,7 @@ import { Event } from "./entity/Event"
 import { Faq } from "./entity/Faq"
 import { Amenities } from "./entity/Amenities"
 import { JobListing } from "./entity/JobListing"
+import { ApplyJob } from "./entity/ApplyJob"
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -18,7 +19,7 @@ export const AppDataSource = new DataSource({
     database: "sachvkfl_bookmark",
     synchronize: true,
     logging: false,
-    entities: [User,Category,Indexes,AuditTrail,Event,Faq,Amenities,JobListing],
+    entities: [User,Category,Indexes,AuditTrail,Event,Faq,Amenities,JobListing,ApplyJob],
     migrations: [],
     subscribers: [],
 })
