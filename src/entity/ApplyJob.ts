@@ -7,7 +7,7 @@ export enum WP {
 }
 
 
-@Entity("tb_applyjob")
+@Entity("tb_applyjobs")
 export class ApplyJob {
 
     @PrimaryGeneratedColumn()
@@ -25,11 +25,7 @@ export class ApplyJob {
     @Column()
     jobRole: string
 
-    @Column({
-        type: "varchar",
-        length: 150,
-        unique: true
-    })
+    @Column()
     jobId: string
 
     @Column()
