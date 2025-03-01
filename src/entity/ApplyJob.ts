@@ -48,6 +48,9 @@ export class ApplyJob {
     resume: Buffer
 
     @Column()
+    fileName: string
+
+    @Column()
     remarks: string
 
     @CreateDateColumn()

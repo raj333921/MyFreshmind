@@ -2,9 +2,13 @@ import { AppDataSource } from "./data-source"
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import {Request, Response} from "express";
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 import {Routes} from "./routes";
 import {User} from "./entity/User";
 import * as cors from "cors";
+import {ApplyJobController} from "./controller/ApplyJobController";
  const app = express();
  app.use(bodyParser.json());
  app.listen(3143);
@@ -19,6 +23,16 @@ import * as cors from "cors";
             result.json(result);
          }
       });
+   });
+
+   app.post('/freshdb/applyJob',upload.single('resume'),(req,res)=>{
+    if (!req.file) {
+       return res.status(400).send('No file uploaded');
+     }
+       const result = new ApplyJobController().save(req,res);
+       if (result instanceof Promise) {
+            result.then(result => result !== null && result !== undefined ? res.send(result) : undefined);
+       }
    });
 AppDataSource.initialize().then(async () => {
 

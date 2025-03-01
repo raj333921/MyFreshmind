@@ -183,13 +183,10 @@ export const Routes = [
                                                 route: "/freshdb/applyJob/:id",
                                                 controller: ApplyJobController, action: "one"
                                             }, {
-                                                method: "post",
-                                                route: "/freshdb/applyJob",
-                                                controller: ApplyJobController, action: "save"
-                                            }, {
                                                 method: "delete",
                                                 route: "/freshdb/applyJob/:id",
-                                                controller: ApplyJobController, action: "remove"
+                                                controller: ApplyJobController,
+                                                action: "remove"
                                             },
                   ];
 
