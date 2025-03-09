@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column,ManyToOne,JoinColumn,CreateDateColumn,UpdateDateColumn} from "typeorm"
-import { Event } from './Event'
+
+
 @Entity("tb_joblisting")
 export class JobListing {
 

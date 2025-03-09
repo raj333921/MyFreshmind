@@ -1,12 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column,ManyToOne,JoinColumn,CreateDateColumn,UpdateDateColumn} from "typeorm"
 import { Event } from './Event'
 
-export enum WP {
-    WP_YES = "yes",
-    WP_NO = "no",
-}
-
-
 @Entity("tb_applyjobs")
 export class ApplyJob {
 
@@ -31,12 +25,8 @@ export class ApplyJob {
     @Column()
     country: string
 
-    @Column({
-            type: "enum",
-            enum: WP,
-            default: WP.WP_NO,
-        })
-    workPermit: WP
+    @Column()
+    workPermit: string
 
     @Column()
     salary: string
