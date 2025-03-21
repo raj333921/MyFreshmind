@@ -1,38 +1,49 @@
 import { Entity, PrimaryGeneratedColumn, Column,ManyToOne,JoinColumn,CreateDateColumn,UpdateDateColumn} from "typeorm"
-import { Category } from "./Category"
 
-@Entity("tb_indexes")
-export class Indexes {
+
+@Entity("tb_joblisting")
+export class JobListing {
 
     @PrimaryGeneratedColumn()
     id: number
 
     @Column()
-    name: string
+    experience: string
 
     @Column()
-    description: string
+    employeeType: string
 
     @Column()
-    url: string
+    language: string
 
     @Column()
-    type: string
+    jobRole: string
+
+    @Column()
+    commuteType: string
 
     @Column()
     location: string
 
     @Column()
-    categoryId: number
+    salary: string
+
+    @Column()
+    description: string
+
+    @Column()
+    techDetails: string
+
+    @Column()
+    client: string
+
+    @CreateDateColumn()
+    closeDate: Date;
 
     @CreateDateColumn()
     created_at: Date;
 
     @UpdateDateColumn()
     updated_at: Date;
-
-    @ManyToOne(() => Category, (category) => category.indexes)
-    @JoinColumn({name :'categoryId'})
-    category: Category
 
 }

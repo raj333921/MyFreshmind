@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column,ManyToOne,JoinColumn,CreateDateColumn,UpdateDateColumn} from "typeorm"
 import { Category } from "./Category"
 
-@Entity()
+@Entity("tb_audittrail")
 export class AuditTrail {
 
     @PrimaryGeneratedColumn()

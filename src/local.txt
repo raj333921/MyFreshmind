@@ -7,7 +7,7 @@ export const AppDataSource = new DataSource({
     database: "postgres",
     synchronize: true,
     logging: false,
-    entities: [User,Category,Indexes,AuditTrail,Event,Faq],
+    entities: [User,Category,Indexes,AuditTrail,Event,Faq,Amenities,JobListing,ApplyJob],
     migrations: [],
     subscribers: [],
 })
@@ -23,7 +23,7 @@ export const AppDataSource = new DataSource({
     database: "sachvkfl_bookmark",
     synchronize: true,
     logging: false,
-    entities: [User,Category,Indexes,AuditTrail,Event,Faq],
+    entities: [User,Category,Indexes,AuditTrail,Event,Faq,Amenities,JobListing,ApplyJob],
     migrations: [],
     subscribers: [],
 })

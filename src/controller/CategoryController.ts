@@ -9,8 +9,9 @@ export class CategoryController {
    private categoryRepository = AppDataSource.getRepository(Category);
    private auditController:AuditController = new AuditController();
    async all(request: Request, response: Response, next: NextFunction) {
+     let loc = request.query.loc ? request.query.loc : "BE"
      this.auditController.saveAudit("CATEGORY & INDEX REQUEST",ip.address(),"REQUEST");
-      return this.categoryRepository.createQueryBuilder("category").innerJoinAndSelect("category.indexes", "indexes").getMany();
+     return this.categoryRepository.createQueryBuilder("category").where("category.location = :location", { location: loc }).innerJoinAndSelect("category.indexes", "indexes").getMany();
    } 
 
 
@@ -33,5 +34,10 @@ export class CategoryController {
        this.auditController.saveAudit("CATEGORY REMOVE",ip.address(),"DELETE");
        let userToRemove = await this.categoryRepository.findOneBy({id:parseInt(request.params.id)});
        return this.categoryRepository.remove(userToRemove);
+   }
+
+   async bulksave(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("CATEGORY BULK REQUEST",ip.address(),"INSERT");
+      return this.categoryRepository.createQueryBuilder().insert().into(Category).values(request.body).execute();
    }
 }

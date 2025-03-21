@@ -12,8 +12,8 @@ export class EventController {
    async all(request: Request, response: Response, next: NextFunction) {
      this.auditController.saveAudit("EVENTS ALL REQUEST",ip.address(),"SELECT");
       return this.eventRepository.find();
-   } 
-   
+   }
+
    async one(request: Request, response: Response, next: NextFunction) {
        this.auditController.saveAudit("EVENTS ONE REQUEST",ip.address(),"SELECT");
        return this.eventRepository.findOneBy({id:parseInt(request.params.id)});
@@ -29,4 +29,15 @@ export class EventController {
        let userToRemove = await this.eventRepository.findOneBy({id:parseInt(request.params.id)});
        return this.eventRepository.remove(userToRemove);
    }
+
+   async bulksave(request: Request, response: Response, next: NextFunction) {
+     this.auditController.saveAudit("EVENT BULK REQUEST",ip.address(),"INSERT");
+      return this.eventRepository.createQueryBuilder().insert().into(Event).values(request.body).execute();
+   }
+
+   async allEA(request: Request, response: Response, next: NextFunction) {
+        let loc = request.query.loc ? request.query.loc : "BE"
+        this.auditController.saveAudit("Event & Amenities REQUEST",ip.address(),"REQUEST");
+        return this.eventRepository.createQueryBuilder("event").where("event.location = :location", { location: loc }).andWhere("event.endDate >= :endDate", { endDate: new Date() }).leftJoinAndSelect("event.amenities", "amenities").getMany();
+      }
 }

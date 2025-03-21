@@ -4,6 +4,10 @@ import {IndexesController} from "./controller/IndexesController";
 import {AuditController} from "./controller/AuditController";
 import {EventController} from "./controller/EventController";
 import {FAQController} from "./controller/FAQController";
+import {AmenitiesController} from "./controller/AmenitiesController";
+import {JobListingController} from "./controller/JobListingController";
+import {ApplyJobController} from "./controller/ApplyJobController";
+
 
 export const Routes = [
     //User Routes
@@ -47,7 +51,11 @@ export const Routes = [
         method: "delete",
         route: "/freshdb/category/:id",
         controller: CategoryController, action: "remove"
-    },
+    }, {
+              method: "post",
+              route: "/freshdb/categorybulk",
+              controller: CategoryController, action: "bulksave"
+          },
     //Index Routes
     {
         method: "get",
@@ -65,7 +73,11 @@ export const Routes = [
         method: "delete",
         route: "/freshdb/index/:id",
         controller: IndexesController, action: "remove"
-    },
+    },{
+              method: "post",
+              route: "/freshdb/indexbulk",
+              controller: IndexesController, action: "bulksave"
+          },
     //Audit Routes
     {
         method: "get",
@@ -89,7 +101,15 @@ export const Routes = [
         method: "delete",
         route: "/freshdb/event/:id",
         controller: EventController, action: "remove"
-    },
+    },{
+      method: "post",
+              route: "/freshdb/eventbulk",
+              controller: EventController, action: "bulksave"
+          },{
+      method: "get",
+              route: "/freshdb/eventamenities",
+              controller: EventController, action: "allEA"
+          },
     //FAQ Routes
     {
         method: "get",
@@ -107,4 +127,66 @@ export const Routes = [
         method: "delete",
         route: "/freshdb/faq/:id",
         controller: FAQController, action: "remove"
-    }];
+    },{
+      method: "post",
+              route: "/freshdb/faqbulk",
+              controller: FAQController, action: "bulksave"
+          },
+
+        //Amenities
+        {
+                method: "get",
+                route: "/freshdb/amenities",
+                controller: AmenitiesController, action: "all"
+            }, {
+                method: "get",
+                route: "/freshdb/amenities/:id",
+                controller: AmenitiesController, action: "one"
+            }, {
+                method: "post",
+                route: "/freshdb/amenities",
+                controller: AmenitiesController, action: "save"
+            }, {
+                method: "delete",
+                route: "/freshdb/amenities/:id",
+                controller: AmenitiesController, action: "remove"
+            },{
+              method: "post",
+                      route: "/freshdb/amenitiesbulk",
+                      controller: AmenitiesController, action: "bulksave"
+                  },
+                  //JOB Listing
+                  {
+                          method: "get",
+                          route: "/freshdb/jobListing",
+                          controller: JobListingController, action: "all"
+                      }, {
+                          method: "get",
+                          route: "/freshdb/jobListing/:id",
+                          controller: JobListingController, action: "one"
+                      }, {
+                          method: "post",
+                          route: "/freshdb/jobListing",
+                          controller: JobListingController, action: "save"
+                      }, {
+                          method: "delete",
+                          route: "/freshdb/jobListing/:id",
+                          controller: JobListingController, action: "remove"
+                      },
+                      //Apply Job
+                                        {
+                                                method: "get",
+                                                route: "/freshdb/applyJob",
+                                                controller: ApplyJobController, action: "all"
+                                            }, {
+                                                method: "get",
+                                                route: "/freshdb/applyJob/:id",
+                                                controller: ApplyJobController, action: "one"
+                                            }, {
+                                                method: "delete",
+                                                route: "/freshdb/applyJob/:id",
+                                                controller: ApplyJobController,
+                                                action: "remove"
+                                            },
+                  ];
+
